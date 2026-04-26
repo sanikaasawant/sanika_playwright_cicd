@@ -2,14 +2,13 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Setup Python
@@ -17,16 +16,16 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: |
         pip install -r requirements.txt
         playwright install
 
-    - name: Run Tests
+    - name: Run tests
       run: pytest
 
-    - name: Upload HTML Report
+    - name: Upload report
       uses: actions/upload-artifact@v3
       with:
-        name: playwright-report
+        name: report
         path: report.html
